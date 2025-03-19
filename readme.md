@@ -20,27 +20,29 @@ The analysis uses two main datasets:
   Various property ratings (overall, communication, accuracy, cleanliness, check-in, location, value)
   Attrition outcome (whether the host delisted the property)
 
-abb_new.csv: Current dataset of Airbnb properties for which the retention strategy needs to be applied.
-For further details, refer to the project document: hw5 - Airbnb retention.pdf.
+* abb_new.csv: Current dataset of Airbnb properties for which the retention strategy needs to be applied.
+  For further details, refer to the project document: hw5 - Airbnb retention.pdf.
 
 ## Methodology
-1. Exploratory Data Analysis (EDA)
+
+### 1. Exploratory Data Analysis (EDA)
 Data Inspection: Verify data quality and absence of null values.
 Visualization: Generate box plots and pair plots to understand feature distributions and identify outliers.
-2. Data Cleaning and Feature Engineering
-New Features:
+
+### 2. Data Cleaning and Feature Engineering
+#### New Features:
 Booking Growth: Calculated as the Compound Annual Growth Rate (CAGR) of reservation days.
 Past 6-Month Ratio: Ratio of the sum of reservation days in the latter half of the year to the total annual reservation days.
 Total Reservations & Annual Revenue: Computed from the daily rate and reservation days.
-Preprocessing Pipeline:
+#### Preprocessing Pipeline:
 Extreme Imputer: Caps feature values outside three standard deviations to reduce the impact of outliers.
 Standard Scaling: Normalizes selected features for improved model performance.
-3. Modeling and Validation
+### 3. Modeling and Validation
 Variable Selection: Lasso regression is used to evaluate variable importance and visualize the effect of different regularization strengths.
 Ensemble Modeling: A stacking classifier combining Random Forest, MLP, and Gradient Boosting models is trained to predict host attrition.
 Performance Metrics: Model performance is evaluated using ROC curves, confusion matrices, and classification reports.
 ROI Analysis: Simulations determine the optimal probability cutoffs for gift allocation to maximize net profit. The analysis segments properties by margin quantiles for a more tailored strategy.
-4. Final Prediction
+### 4. Final Prediction
 Test Data Processing: The same feature engineering and preprocessing steps are applied to the test data (abb_new.csv).
 Retention Decision: A final retention strategy is developed by assigning a gift (1 for retention, 0 for no gift) based on predicted probabilities and segment-specific optimal cutoffs.
 Output: The final recommendations are saved to submission.csv.
