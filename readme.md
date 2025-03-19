@@ -13,7 +13,7 @@ Maximize Net Profit: Calculate net profit as 15% of the total revenue from prope
 ## Data Description
 The analysis uses two main datasets:
 
-abb.csv: 
+* abb.csv: 
   Historical dataset containing:
   Property information (ID, location, number of bedrooms and bathrooms, average daily rate)
   Reservation days for each of the past 12 months (reservationdays1 - reservationdays12)
